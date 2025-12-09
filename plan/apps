@@ -1,0 +1,29 @@
+account
+
+Backend
+
+User model
+
+Signup API
+
+Login API
+
+JWT Access + Refresh
+
+Middlewares
+
+Logout
+
+Protected routes
+
+Frontend
+
+Register page
+
+Login page
+
+AuthContext
+
+Store token locally
+
+Protected routes system

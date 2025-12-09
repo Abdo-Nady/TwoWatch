@@ -1,0 +1,134 @@
+### تسجيل مستخدم
+POST http://localhost:8000/accounts/register/
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "name": "Test User",
+    "password1": "StrongPass123!",
+    "password2": "StrongPass123!"
+}
+### تسجيل دخول
+POST http://localhost:8000/accounts/login/
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "NewPass123!"
+}
+
+### جلب بيانات المستخدم الحالي
+GET http://localhost:8000/accounts/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQzMDk1LCJpYXQiOjE3NjUyNDEyOTUsImp0aSI6IjI1MjkwNmM0YWNkMzQ3MDZiOGQ3YmI5OGEzZDM4YzY4IiwidXNlcl9pZCI6IjIifQ.FM4b24Hh8clZlLiMic9dbYi3jXJzyYVDP1fR1JQj0sE
+
+### 1
+POST http://localhost:8000/accounts/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQzMDk1LCJpYXQiOjE3NjUyNDEyOTUsImp0aSI6IjI1MjkwNmM0YWNkMzQ3MDZiOGQ3YmI5OGEzZDM4YzY4IiwidXNlcl9pZCI6IjIifQ.FM4b24Hh8clZlLiMic9dbYi3jXJzyYVDP1fR1JQj0sE"
+}
+
+### 2
+POST http://localhost:8000/accounts/token/verify/
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+
+
+
+
+
+
+### 3
+# شوف الـ profile بتاعك
+GET http://localhost:8000//accounts/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQzMDk1LCJpYXQiOjE3NjUyNDEyOTUsImp0aSI6IjI1MjkwNmM0YWNkMzQ3MDZiOGQ3YmI5OGEzZDM4YzY4IiwidXNlcl9pZCI6IjIifQ.FM4b24Hh8clZlLiMic9dbYi3jXJzyYVDP1fR1JQj0sE
+
+
+### 4
+# حدّث الـ bio
+PATCH http://localhost:8000//accounts/profile/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQzMDk1LCJpYXQiOjE3NjUyNDEyOTUsImp0aSI6IjI1MjkwNmM0YWNkMzQ3MDZiOGQ3YmI5OGEzZDM4YzY4IiwidXNlcl9pZCI6IjIifQ.FM4b24Hh8clZlLiMic9dbYi3jXJzyYVDP1fR1JQj0sE
+
+{
+    "bio": "Movie enthusiast 🎬"
+}
+
+
+### 5
+# أضف genres مفضلة
+POST http://localhost:8000//accounts/profile/genres/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQzMDk1LCJpYXQiOjE3NjUyNDEyOTUsImp0aSI6IjI1MjkwNmM0YWNkMzQ3MDZiOGQ3YmI5OGEzZDM4YzY4IiwidXNlcl9pZCI6IjIifQ.FM4b24Hh8clZlLiMic9dbYi3jXJzyYVDP1fR1JQj0sE
+
+{
+    "genre_ids": [1, 2, 3]
+}
+
+
+### 6
+
+POST http://localhost:8000//accounts/password/change/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQ1MDE4LCJpYXQiOjE3NjUyNDMyMTgsImp0aSI6IjNmNjI1YzJkNjIwNTRhZWNiNjNlZjI1YWEyNjVmYWE3IiwidXNlcl9pZCI6IjIifQ.aJp9R5Op1qgFqBIOKnth0JhCjlva7SJ-rAdBkewV-gQ
+Content-Type: application/json
+
+{
+    "old_password": "StrongPass123!",
+    "new_password1": "NewPass123!",
+    "new_password2": "NewPass123!"
+}
+
+
+
+
+### 7
+
+POST http://localhost:8000//accounts/profile/avatar/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQ1MDE4LCJpYXQiOjE3NjUyNDMyMTgsImp0aSI6IjNmNjI1YzJkNjIwNTRhZWNiNjNlZjI1YWEyNjVmYWE3IiwidXNlcl9pZCI6IjIifQ.aJp9R5Op1qgFqBIOKnth0JhCjlva7SJ-rAdBkewV-gQ
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="avatar"; filename="img1.png"
+Content-Type: image/png
+
+< ./media/avatars/img1.png
+--WebAppBoundary--
+
+
+### 8
+DELETE http://localhost:8000//accounts/profile/avatar/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQ1MDE4LCJpYXQiOjE3NjUyNDMyMTgsImp0aSI6IjNmNjI1YzJkNjIwNTRhZWNiNjNlZjI1YWEyNjVmYWE3IiwidXNlcl9pZCI6IjIifQ.aJp9R5Op1qgFqBIOKnth0JhCjlva7SJ-rAdBkewV-gQ
+
+
+### 9
+
+PATCH http://localhost:8000//accounts/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1MjQ1MDE4LCJpYXQiOjE3NjUyNDMyMTgsImp0aSI6IjNmNjI1YzJkNjIwNTRhZWNiNjNlZjI1YWEyNjVmYWE3IiwidXNlcl9pZCI6IjIifQ.aJp9R5Op1qgFqBIOKnth0JhCjlva7SJ-rAdBkewV-gQ
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="bio"
+
+Movie lover 🎬
+--WebAppBoundary
+Content-Disposition: form-data; name="avatar"; filename="img2.png"
+Content-Type: image/png
+
+< ./media/avatars/img2.png
+--WebAppBoundary
+Content-Disposition: form-data; name="favorite_genre_ids"
+
+1
+--WebAppBoundary
+Content-Disposition: form-data; name="favorite_genre_ids"
+
+2
+--WebAppBoundary
+Content-Disposition: form-data; name="favorite_genre_ids"
+
+3
+--WebAppBoundary--

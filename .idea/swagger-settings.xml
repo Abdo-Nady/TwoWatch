@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SwaggerSettings">
+    <remoteSpecificationUrls>
+      <UrlInfo>
+        <option name="urlString" value="https://api.swaggerhub.com/apis/inner.house/raincatch/1.0.0/swagger.yaml" />
+      </UrlInfo>
+      <UrlInfo>
+        <option name="urlString" value="http://localhost:8000/accounts/register/" />
+      </UrlInfo>
+      <UrlInfo>
+        <option name="urlString" value="http://localhost:8000" />
+      </UrlInfo>
+    </remoteSpecificationUrls>
+    <option name="visualEditingEnabled" value="false" />
+  </component>
+</project>

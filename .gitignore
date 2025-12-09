@@ -1,3 +1,78 @@
-/plan
-/.venv
-/.env
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.db
+*.sqlite3-journal
+
+# Media files uploaded by users
+media/
+staticfiles/
+static_root/
+
+# Django migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# Docker
+*.env
+docker-compose.override.yml
