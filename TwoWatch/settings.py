@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from datetime import timedelta
 import os
 
+from decouple import config
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-&ezm#wtz7^=u+n1y4&x+h&kpb&3ycpxzg+3*-c#w@xz4s&@i7a"
+SECRET_KEY = config('SECRET_KEY')
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.User'
