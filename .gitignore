@@ -76,3 +76,6 @@ htmlcov/
 # Docker
 *.env
 docker-compose.override.yml
+
+
+requests.http
