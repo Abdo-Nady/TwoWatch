@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     # Auth
     'dj_rest_auth',
-
     'dj_rest_auth.registration',
 
     # Social Login
@@ -153,6 +152,15 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_UNIQUE_EMAIL = True
 
+# Social Account Adapters
+SOCIALACCOUNT_ADAPTER = 'accounts.adapters.CustomSocialAccountAdapter'
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+
+# Social Account Settings
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": [
@@ -160,11 +168,11 @@ SOCIALACCOUNT_PROVIDERS = {
             "email",
         ],
         "AUTH_PARAMS": {"access_type": "online"},
-    },
-    "APP": {
-        "client_id": os.getenv("GOOGLE_CLIENT_ID"),
-        "secret": os.getenv("GOOGLE_CLIENT_SECRET"),
-        "key": ""
+        "APP": {
+            "client_id": os.getenv("GOOGLE_CLIENT_ID", ""),
+            "secret": os.getenv("GOOGLE_CLIENT_SECRET", ""),
+            "key": ""
+        }
     }
 }
 
