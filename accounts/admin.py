@@ -8,7 +8,7 @@ class UserAdmin(BaseUserAdmin):
     """Custom User Admin"""
     list_display = ['email', 'name', 'username', 'is_staff', 'is_active']
     list_filter = ['is_staff', 'is_active', 'date_joined']
-    search_fieldsو = ['email', 'name', 'username']
+    search_fields = ['email', 'name', 'username']
     ordering = ['-date_joined']
 
     fieldsets = (
