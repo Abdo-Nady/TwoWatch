@@ -61,7 +61,6 @@ Custom serializer for User with Profile
             'id',
             'email',
             'username',
-            'name',
             'profile',
         ]
 
@@ -69,33 +68,29 @@ Custom serializer for User with Profile
 class CustomRegisterSerializer(RegisterSerializer):
     """
     Custom Registration Serializer
-
+    Username is auto-generated from email
     """
-    username = None  # ✅ نشيل الـ username
-    name = serializers.CharField(max_length=255, required=False)
-
-    def get_cleaned_data(self):
-        data = super().get_cleaned_data()
-        data['name'] = self.validated_data.get('name', '')
-        return data
-
+    username = None  # Hide username from registration form
+    
     def save(self, request):
         email = self.validated_data.get('email')
+        # Generate username from email 
         username = email.split('@')[0]
-
-        from django.contrib.auth import get_user_model
-        User = get_user_model()
-        counter = 1
-        original_username = username
-        while User.objects.filter(username=username).exists():
-            username = f"{original_username}{counter}"
-            counter += 1
-
+        
+        # Clean username: remove special characters
+        import re
+        username = re.sub(r'[^a-zA-Z0-9_]', '', username)
+        if not username:
+            username = 'user'
+        
+        # Truncate if too long (max 150 chars)
+        if len(username) > 150:
+            username = username[:150]
+        
+        # Set username before calling super().save()
         self.validated_data['username'] = username
 
         user = super().save(request)
-        user.name = self.cleaned_data.get('name', '')
-        user.save()
         return user
 
 

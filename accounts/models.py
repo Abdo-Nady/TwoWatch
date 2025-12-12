@@ -10,17 +10,23 @@ from django.dispatch import receiver
 class User(AbstractUser):
     """
     Custom User Model
-    - name
     - Email (required & unique)
     - Password
+    - Username (not unique)
     """
     id = models.BigAutoField(primary_key=True)
     email = models.EmailField(unique=True)
-    name = models.CharField(max_length=255, blank=True)
-
+    # Override username to remove unique constraint
+    username = models.CharField(
+        max_length=150,
+        unique=False,
+        blank=True,
+        null=True,
+        help_text='Optional. Not required for login.'
+    )
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']  # مطلوب فقط لـ createsuperuser
+    REQUIRED_FIELDS = []  # No required fields for createsuperuser
 
     def __str__(self):
         return self.email
@@ -49,8 +55,7 @@ class Genre(models.Model):
 
 class UserProfile(models.Model):
     """
-    الـ Profile الخاص بكل User
-    -(genres)
+   user profile
     """
     id = models.BigAutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')

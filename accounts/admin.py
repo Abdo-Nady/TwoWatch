@@ -6,14 +6,14 @@ from .models import User, UserProfile, Genre
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     """Custom User Admin"""
-    list_display = ['email', 'name', 'username', 'is_staff', 'is_active']
+    list_display = ['email', 'username', 'is_staff', 'is_active']
     list_filter = ['is_staff', 'is_active', 'date_joined']
-    search_fields = ['email', 'name', 'username']
+    search_fields = ['email', 'username']
     ordering = ['-date_joined']
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal Info', {'fields': ('name', 'username')}),
+        ('Personal Info', {'fields': [ 'username']}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
@@ -21,7 +21,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'name', 'username', 'password1', 'password2'),
+            'fields': ('email',  'username', 'password1', 'password2'),
         }),
     )
 
@@ -31,7 +31,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     """User Profile Admin"""
     list_display = ['user', 'bio_preview', 'genres_count', 'created_at']
     list_filter = ['created_at']
-    search_fields = ['user__email', 'user__name', 'bio']
+    search_fields = ['user__email', 'user__username', 'bio']
     filter_horizontal = ['favorite_genres']
 
     def bio_preview(self, obj):
