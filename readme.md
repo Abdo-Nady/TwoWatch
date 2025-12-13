@@ -2,7 +2,7 @@
 
 The project will be a move list for couples with many features.
 
-The project could be finished in approximately 3 weeks or less, depending on my availability.
+The project could be finished in approximately 8 weeks or less, depending on my availability.
 
 Reasons for developing this project:
 
